@@ -8,29 +8,34 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container">
+    <div class="container mt-5">
         <h2>Product List</h2>
-        <a href="/create" class="btn btn-primary">Add Product</a>
+        <a href="/create" class="btn btn-primary mb-3">Add Product</a>
         <table class="table table-bordered" id="mytable">
             <thead>
                 <tr>
-                    <td>No</td>
+                    <td>Id</td>
                     <td>Name</td>
                     <td>Price</td>
                     <td>Aksi</td>
                 </tr>
             </thead>
             <tbody>
+              
                 {{#each results}}
                     <tr>
                         <td>{{ id }}</td>
                         <td>{{ name }}</td>
                         <td>{{ price }}</td>
                         <td>
-                            <a href="/edit" class="btn btn-sm btn-info edit">Edit</a>
-                            <a href="/delete" class="btn btn-sm btn-danger delete">Delete</a>
+                            <a href="/edit/{{ id }}" class="btn btn-sm btn-info edit">Edit</a>
+                            <form action="/delete" class="d-inline" method="post">
+                                <input type="hidden" name="id" value="{{ id }}">
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete?')">Delete</button>
+                            </form>
                         </td>
                     </tr>
+                    
                 {{/each}}
             </tbody>
         </table>

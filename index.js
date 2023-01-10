@@ -56,6 +56,17 @@ app.post('/save', (req, res) => {
     })
 })
 
+// route update data
+
+// route delete data
+app.post('/delete', (req, res) => {
+    let sql = "DELETE FROM product WHERE id="+ req.body.id +""
+    let query = conn.query(sql, (err, results) => {
+        if(err) throw err
+        res.redirect('/')
+    })
+})
+
 // server
 app.listen(8000, () => {
     console.log('Server is running at port 8000');
