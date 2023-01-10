@@ -28,14 +28,13 @@
                         <td>{{ name }}</td>
                         <td>{{ price }}</td>
                         <td>
-                            <a href="/edit/{{ id }}" class="btn btn-sm btn-info edit">Edit</a>
+                            <a href="/product_edit/{{ id }}" class="btn btn-sm btn-info edit">Edit</a>
                             <form action="/delete" class="d-inline" method="post">
                                 <input type="hidden" name="id" value="{{ id }}">
                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete?')">Delete</button>
                             </form>
                         </td>
                     </tr>
-                    
                 {{/each}}
             </tbody>
         </table>

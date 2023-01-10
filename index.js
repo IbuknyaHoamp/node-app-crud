@@ -57,6 +57,20 @@ app.post('/save', (req, res) => {
 })
 
 // route update data
+app.get('/product_edit/:id',  (req, res) => { 
+    let sql = "SELECT * FROM product WHERE id="+req.params.id
+    let query = conn.query(sql, (err, results) =>{
+        if(err) throw err
+        res.render('product_view', {
+            results: results
+        })
+    })
+    res.render('product_edit', query)
+})
+app.post('/update', (req, res) => {
+    
+})
+
 
 // route delete data
 app.post('/delete', (req, res) => {
